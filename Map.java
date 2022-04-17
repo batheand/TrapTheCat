@@ -1,4 +1,4 @@
-import javax.swing.;
+import javax.swing.*;
 
 public class Map extends JComponent {
     private boolean[] [] isBLocked = new boolean[8][8];
