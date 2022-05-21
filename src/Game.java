@@ -1,3 +1,7 @@
+package src;
+
+import src.Cat;
+
 public class Game{
 
     public void StartGame() {

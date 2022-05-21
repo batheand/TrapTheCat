@@ -1,4 +1,6 @@
-public class Cat extends Map{
+package src;
+
+public class Cat extends Map {
     private int catLocationX;
     private int catLocationY;
 
