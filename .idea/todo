@@ -1,6 +1,3 @@
-create 11*11 buttons with numbers in sequential order
-method to translate cell coordinates into button numbers
-add is it near check with each button press and act accordingly
 for graphics, change actual numbers first, and update screen after each change to check if cats and blocks are ok
 
 launch game
@@ -12,6 +9,24 @@ launch game
 
 ##launch, display background, display cat, display blocked tiles
 
+
+refresh screen:
+if blockers turn: get the newly blocked tile
+change image with blocked version
+
+if cats turn: get new location
+move cat
+
+gameplay:
+initialize map,
+place cat,
+refresh screen
+give turn to player
+record blocked tile
+refresh screen
+action of cat by ai
+refresh screen
+do until end conditions
 
 
 ai:

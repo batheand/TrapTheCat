@@ -1,8 +1,10 @@
 public class Game{
 
-    public void RunGame() {
-        Cat game = new Cat();
+    public void StartGame() {
+        Cat kitty = new Cat();
 
-        game.initializeCatLocation();
+        kitty.initializeCatLocation();
+
+
     }
 }

@@ -1,12 +1,8 @@
 public class Tile {
 
     private boolean isitBlocked;
-    private int x, y;
+    private final int x, y;
 
-    public Tile(){
-
-
-    }
     public Tile(int coordianteX, int coordinateY){
         isitBlocked = false;
         x=coordianteX;
