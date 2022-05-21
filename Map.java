@@ -1,30 +1,22 @@
 import javax.swing.*;
 
 public class Map extends JComponent {
+    public Tile[] tiles = new Tile[121];
     private boolean[] [] isBLocked = new boolean[8][8];
-    public void initializeBlocked() {
-        for(int i=0; i<=8; i++) {
-            for(int n = 0; n<=8; n++) {
-                isBLocked[i] [n]=false;
+    public void initializeMap() {   //initlalizes map and blocks 12 random tiles
+        for(int i=0, y=1,x=1; i<11*11; i++,x++,y++) {
+            if((x%12)==0){
+                x+=1;
             }
+            tiles[i] = new Tile(x%12,y / 11 + ((y % 11 == 0) ? 0 : 1));
         }
-    }
-    public boolean isItBlocked(int y, int x) {
-        boolean [] [] isBlockedTemp = getIsBLocked();
-        boolean isItBlocked = isBlockedTemp[x][y];
-        return isItBlocked;
-    }
-    public void blockTheTile(int y, int x) {
-        boolean [] [] tempIsBlocked = getIsBLocked();
-        tempIsBlocked [x] [y] = true;
-        setIsBLocked(tempIsBlocked);
+
+        for(int i=0; i<12; i++){
+            double random = Math.random()*121;
+            tiles[(int) random].setIsitBlocked(true);
+        }
     }
     JComponent buttons = new JButton();
 
-    public boolean[][] getIsBLocked() {
-        return isBLocked;
-    }
-    public void setIsBLocked(boolean[][] isBLocked) {
-        this.isBLocked = isBLocked;
-    }
+
 }

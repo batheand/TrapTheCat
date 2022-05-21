@@ -1,0 +1,28 @@
+create 11*11 buttons with numbers in sequential order
+method to translate cell coordinates into button numbers
+add is it near check with each button press and act accordingly
+for graphics, change actual numbers first, and update screen after each change to check if cats and blocks are ok
+
+launch game
+#1, launch menu, 2 buttons(single or multi)
+
+##Single, ask for difficulty, launch
+
+##multi, launch
+
+##launch, display background, display cat, display blocked tiles
+
+
+
+ai:
+create distance to win value for each square
+edges get 1
+each square adjacent to a 1 gets 2, 2 gets 3
+
+create poss routes
+distance to win=1 gets route of 2
+
+others get sum of routes with smaller distance to wins
+
+
+best for cat is highest score which is route/distance

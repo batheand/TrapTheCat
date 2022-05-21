@@ -1,13 +1,18 @@
 public class Cat extends Map{
     private int catLocationX;
     private int catLocationY;
-    public void initializeCatLocation() {
+    /*public void initializeCatLocation() {
         int x = (int) (Math.random()*2) , y = (int) (Math.random()*2);
         x = x+3;
         y = y+3;
         setCatLocationX(x);
         setCatLocationY(y);
 
+    }
+*/
+    public void initializeCatLocation(){
+        catLocationX = 6;
+        catLocationY = 6;
     }
     public boolean isItNear(int y, int x) {
         int currX = getCatLocationX(), currY = getCatLocationY();
