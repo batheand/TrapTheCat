@@ -39,11 +39,7 @@ public class Cat extends Map{
     public boolean isItNear(Tile cell) {
         int currX = getCatLocationX(), currY = getCatLocationY();
         boolean isNear;
-        if (((cell.getY()<=(currY-2))||(cell.getY()>=(currY+2)))||((cell.getX()<=(currX-2))||(cell.getX()>=(currX+2)))) {
-            isNear=false;
-        }else{
-            isNear=true;
-        }
+        isNear= ((cell.getY() > (currY - 2)) && (cell.getY() < (currY + 2))) && ((cell.getX() > (currX - 2)) && (cell.getX() < (currX + 2)));
         return isNear;
     }
     public void MoveTheCat(Tile cell) {
@@ -53,7 +49,6 @@ public class Cat extends Map{
         isAvailable = !isAvailable;
         if(inBounds&&isAvailable&&isNear){
             setCatLocation(cell.getY(), cell.getX());
-        } else {
         }
     }
 
