@@ -14,7 +14,7 @@ public class Cat extends Map{
         catLocationX = 6;
         catLocationY = 6;
     }
-    public boolean isItNear(int y, int x) {
+  /*  public boolean isItNear(int y, int x) {
         int currX = getCatLocationX(), currY = getCatLocationY();
         boolean isNear;
         if (((y<=(currY-2))||(y>=(currY+2)))||((x<=(currX-2))||(x>=(currX+2)))) {
@@ -34,6 +34,36 @@ public class Cat extends Map{
         } else {
         }
     }
+
+*/
+    public boolean isItNear(Tile cell) {
+        int currX = getCatLocationX(), currY = getCatLocationY();
+        boolean isNear;
+        if (((cell.getY()<=(currY-2))||(cell.getY()>=(currY+2)))||((cell.getX()<=(currX-2))||(cell.getX()>=(currX+2)))) {
+            isNear=false;
+        }else{
+            isNear=true;
+        }
+        return isNear;
+    }
+    public void MoveTheCat(Tile cell) {
+        boolean inBounds = (cell.getX()>=0&&cell.getX()<=8)&&(cell.getY()>=0&&cell.getY()<=8);
+        boolean isAvailable = cell.getIsitBlocked();
+        boolean isNear = isItNear(cell);
+        isAvailable = !isAvailable;
+        if(inBounds&&isAvailable&&isNear){
+            setCatLocation(cell.getY(), cell.getX());
+        } else {
+        }
+    }
+
+
+
+
+
+
+
+
     public void setCatLocation(int y, int x) {
         setCatLocationY(y);
         setCatLocationX(x);

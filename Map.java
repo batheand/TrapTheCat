@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class Map extends JComponent {
     public Tile[] tiles = new Tile[121];
-    private boolean[] [] isBLocked = new boolean[8][8];
+
     public void initializeMap() {   //initlalizes map and blocks 12 random tiles
         for(int i=0, y=1,x=1; i<11*11; i++,x++,y++) {
             if((x%12)==0){
@@ -16,6 +16,8 @@ public class Map extends JComponent {
             tiles[(int) random].setIsitBlocked(true);
         }
     }
+
+
     JComponent buttons = new JButton();
 
 

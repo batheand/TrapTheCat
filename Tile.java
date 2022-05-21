@@ -5,6 +5,7 @@ public class Tile {
 
     public Tile(){
 
+
     }
     public Tile(int coordianteX, int coordinateY){
         isitBlocked = false;
@@ -19,4 +20,10 @@ public class Tile {
     public boolean getIsitBlocked(){
         return isitBlocked;
     }
+public int getX(){
+        return x;
+}
+public int getY(){
+        return y;
+}
 }
