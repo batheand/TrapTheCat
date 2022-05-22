@@ -1,5 +1,7 @@
 package src;
 
+import java.util.Arrays;
+
 public class Cat extends Map {
 
     private int difficulty;
@@ -64,36 +66,73 @@ public class Cat extends Map {
 
 
     public void moveCatWithCPU(){
+        dtwAssignment();
 
-        //ai here
+        routeAssignment();
+
+        scoreAssignment();
+
+        int[] nextscores = new int[adjacent((tiles[catTile])).length];
+
+        for(int i=0; i<adjacent(tiles[catTile]).length; i++ ){
+        nextscores[i]=adjacent(tiles[catTile])[i].getScore();
+        }
+        Arrays.sort(nextscores);
+        int lowestindex=0, highestindex=0;
+        for(int i=0; i<adjacent(tiles[catTile]).length; i++){
+
+            if (adjacent(tiles[catTile])[i].getScore()==nextscores[0]){
+
+                lowestindex= Tile.getTileWithCoordinates(adjacent(tiles[catTile])[i].getX(),adjacent(tiles[catTile])[i].getY());
+
+            }
+            if  (adjacent(tiles[catTile])[i].getScore()==nextscores[nextscores.length-1]){
+                highestindex= Tile.getTileWithCoordinates(adjacent(tiles[catTile])[i].getX(),adjacent(tiles[catTile])[i].getY());
+            }
+        }
+        if(difficulty==3){
+            setCatTile(highestindex);
+        }
+        if(difficulty==2){
+            if(Math.random()*100<25){
+                setCatTile(lowestindex);
+            }
+            else{
+                setCatTile(highestindex);
+            }
+        }
+        if(difficulty==1){
+                setCatTile(lowestindex);
+            }
+
 
     }
 
     public void dtwAssignment() {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 11 - 2 * i; j++) {
-                if(tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)].getIsitBlocked())
+                if(!tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)].getIsitBlocked())
                     tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)].setDistanceToWin(i);
 
-                if(tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)].getIsitBlocked())
+                if(!tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)].getIsitBlocked())
                     tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)].setDistanceToWin(i);
 
-                if(tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)].getIsitBlocked())
+                if(!tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)].getIsitBlocked())
                     tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)].setDistanceToWin(i);
 
-                if(tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)].getIsitBlocked())
+                if(!tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)].getIsitBlocked())
                     tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)].setDistanceToWin(i);
                 if (i == 0) {
-                    if(tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)].getIsitBlocked())
+                    if(!tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)].getIsitBlocked())
                         tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)].setRoutes(i);
 
-                    if(tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)].getIsitBlocked())
+                    if(!tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)].getIsitBlocked())
                         tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)].setRoutes(i);
 
-                    if(tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)].getIsitBlocked())
+                    if(!tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)].getIsitBlocked())
                         tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)].setRoutes(i);
 
-                    if(tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)].getIsitBlocked())
+                    if(!tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)].getIsitBlocked())
                         tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)].setRoutes(i);
                 }
             }
@@ -116,9 +155,58 @@ public class Cat extends Map {
 
     }
 
-        public void adjacentDtwAdjustment () {
+        public void routeAssignment(){
+            for (int i = 1; i < 6; i++) {
+                for (int j = 0; j < 11 - 2 * i; j++) {
+                    if (!tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)].getIsitBlocked()){
+                        int lala=0;
+                      for(int b=0; b<adjacent(tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)]).length; b++){
+                          if(adjacent(tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)])[b].getDistanceToWin()<i){
+                              lala += adjacent(tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)])[b].getRoutes();}
 
+                      }
+                        tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)].setRoutes(lala);
+                    }
+
+
+                    if (!tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)].getIsitBlocked()){
+                        int lala=0;
+                        for(int b=0; b<adjacent(tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)]).length; b++){
+                            if(adjacent(tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)])[b].getDistanceToWin()<i){
+                                lala += adjacent(tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)])[b].getRoutes();}
+
+                        }
+                        tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)].setRoutes(lala);
+                    }
+                    if (!tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)].getIsitBlocked()){
+                        int lala=0;
+                        for(int b=0; b<adjacent(tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)]).length; b++){
+                            if(adjacent(tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)])[b].getDistanceToWin()<i){
+                                lala += adjacent(tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)])[b].getRoutes();}
+
+                        }
+                        tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)].setRoutes(lala);
+                    }
+                    if (!tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)].getIsitBlocked()){
+                        int lala=0;
+                        for(int b=0; b<adjacent(tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)]).length; b++){
+                            if(adjacent(tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)])[b].getDistanceToWin()<i){
+                                lala += adjacent(tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)])[b].getRoutes();}
+
+                        }
+                        tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)].setRoutes(lala);
+                    }
+                }
+            }}
+
+        public void scoreAssignment(){
+        for(int i=0; i<121; i++){
+            if (!(tiles[i].getDistanceToWin()==0||!tiles[i].getIsitBlocked())){
+                tiles[i].setScore(tiles[i].getRoutes()/tiles[i].getDistanceToWin());
+        }}
         }
+
+
         public void setCatTile ( int i){
             catTile = i;
         }

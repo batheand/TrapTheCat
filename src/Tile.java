@@ -5,6 +5,8 @@ public class Tile {
 
     private int routes;
     private int distanceToWin;
+
+    private int score;
     private boolean isitBlocked;
     private final int x, y;
 
@@ -46,6 +48,14 @@ public int getY(){
 
     public int getRoutes() {
         return routes;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }
 
