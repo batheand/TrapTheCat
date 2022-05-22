@@ -1,6 +1,6 @@
 package src;
 
-public class Game {
+public class Game{
 
     public int startMenu() {
         //insert "press to start" button and welcome screen
@@ -47,14 +47,14 @@ public class Game {
 
 
     public boolean endCurrentTurn(Cat kitty){
-        if(turnCount%2==0){
+        displayGraphics();
+        turnCount++;
+        if(turnCount%2==1){
             return !kitty.validMovesLeft();
-            }
+        }
         else{
             return kitty.isItOnEdge();
         }
-        displayGraphics();
-        turnCount++;
     }
 
     public Tile blockerInput(){

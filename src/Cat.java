@@ -68,11 +68,62 @@ public class Cat extends Map {
         //ai here
 
     }
-    public void setCatTile(int i){
-        catTile=i;
+
+    public void dtwAssignment() {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 11 - 2 * i; j++) {
+                if(tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)].getIsitBlocked())
+                    tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)].setDistanceToWin(i);
+
+                if(tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)].getIsitBlocked())
+                    tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)].setDistanceToWin(i);
+
+                if(tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)].getIsitBlocked())
+                    tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)].setDistanceToWin(i);
+
+                if(tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)].getIsitBlocked())
+                    tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)].setDistanceToWin(i);
+                if (i == 0) {
+                    if(tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)].getIsitBlocked())
+                        tiles[Tile.getTileWithCoordinates(1 + i, 1 + i + j)].setRoutes(i);
+
+                    if(tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)].getIsitBlocked())
+                        tiles[Tile.getTileWithCoordinates(11 - i, 1 + i + j)].setRoutes(i);
+
+                    if(tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)].getIsitBlocked())
+                        tiles[Tile.getTileWithCoordinates(1 + i + j, 1 + i)].setRoutes(i);
+
+                    if(tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)].getIsitBlocked())
+                        tiles[Tile.getTileWithCoordinates(1 + i + j, 11 - i)].setRoutes(i);
+                }
+            }
+            if (i > 0) {
+                for (int b = 0; b < 121; b++) {
+                    if (tiles[b].getDistanceToWin()==i){
+                        boolean dtwneg=true;
+                            for(int c=0; c<adjacent(tiles[b]).length; c++ ){
+                            if(adjacent(tiles[b])[c].getDistanceToWin()==i-1){
+                                dtwneg=false;
+                            }
+                        }
+                        if(dtwneg){
+                            tiles[b].setDistanceToWin((tiles[b].getDistanceToWin())+1);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
-    public int getCatTile() {
-        return catTile;
+        public void adjacentDtwAdjustment () {
+
+        }
+        public void setCatTile ( int i){
+            catTile = i;
+        }
+
+        public int getCatTile () {
+            return catTile;
+        }
     }
-}

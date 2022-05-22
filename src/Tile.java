@@ -2,6 +2,9 @@ package src;
 
 public class Tile {
 
+
+    private int routes;
+    private int distanceToWin;
     private boolean isitBlocked;
     private final int x, y;
 
@@ -11,6 +14,10 @@ public class Tile {
         y=coordinateY;
     }
 
+
+public static int getTileWithCoordinates(int x, int y){
+        return x-1+ (y-1)*11;
+}
     public void setIsitBlocked(boolean isitBlocked) {
         this.isitBlocked = isitBlocked;
     }
@@ -24,4 +31,22 @@ public int getX(){
 public int getY(){
         return y;
 }
+
+    public void setDistanceToWin(int distanceToWin) {
+        this.distanceToWin = distanceToWin;
+    }
+
+    public void setRoutes(int routes) {
+        this.routes = routes;
+    }
+
+    public int getDistanceToWin() {
+        return distanceToWin;
+    }
+
+    public int getRoutes() {
+        return routes;
+    }
 }
+
+
