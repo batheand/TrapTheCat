@@ -49,14 +49,12 @@ public class Game {
     public boolean endCurrentTurn(Cat kitty){
         if(turnCount%2==0){
             return !kitty.validMovesLeft();
-            //list neighbors, check borders, check block of list
-        }
+            }
         else{
             return kitty.isItOnEdge();
         }
         displayGraphics();
         turnCount++;
-        //return end condition
     }
 
     public Tile blockerInput(){
