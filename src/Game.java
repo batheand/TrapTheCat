@@ -11,7 +11,7 @@ public class Game{
 
     public void displayGraphics() {
 
-        //insert method here to display all graphics here(display map, blocked tiles, cat)
+        //insert method here to display(and refresh) all graphics here(display map, blocked tiles, cat)
 
     }
 
