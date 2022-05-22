@@ -28,13 +28,13 @@ public class Game {
 
         do {
             blockerInput().setIsitBlocked(true);
-            endCondition = endCurrentTurn();
+            endCondition = endCurrentTurn(kitty);
             if(!endCondition) {
                 kitty.moveCat();
-                endCondition = endCurrentTurn();
+                endCondition = endCurrentTurn(kitty);
             }
 
-        } while(endCondition);
+        } while(!endCondition);
 
 
         //add userinput here when game ends(endinginput)
@@ -42,8 +42,18 @@ public class Game {
 
 
     }
-    public boolean endCurrentTurn(){
-        //check end conditions based on turn count
+
+
+
+
+    public boolean endCurrentTurn(Cat kitty){
+        if(turnCount%2==0){
+            return !kitty.validMovesLeft();
+            //list neighbors, check borders, check block of list
+        }
+        else{
+            return kitty.isItOnEdge();
+        }
         displayGraphics();
         turnCount++;
         //return end condition

@@ -9,6 +9,7 @@ check if the cat is on the edge of the map, if so, cat end condition
 
 
 
+
 gameplay:
 initialize map,
 place cat,

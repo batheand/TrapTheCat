@@ -3,28 +3,42 @@ package src;
 public class Cat extends Map {
 
     private int difficulty;
+    private int catTile;
 
     public Cat(){}
     public Cat(int diff){
         difficulty=diff;
             }
 
-    private int catLocationX;
-    private int catLocationY;
-
     public void initializeCatLocation(){
-        catLocationX = 6;
-        catLocationY = 6;
+        catTile=60;
     }
 
     public boolean isItNear(Tile cell) {
-        int currX = getCatLocationX(), currY = getCatLocationY();
-        boolean isNear;
-        isNear= ((cell.getY() > (currY - 2)) && (cell.getY() < (currY + 2))) && ((cell.getX() > (currX - 2)) && (cell.getX() < (currX + 2)));
+                boolean isNear;
+        isNear= ((cell.getY() > (tiles[catTile].getY() - 2)) && (cell.getY() < (tiles[catTile].getY() + 2))) && ((cell.getX() > (tiles[catTile].getX() - 2)) && (cell.getX() < (tiles[catTile].getX() + 2)));
         return isNear;
     }
 
+    public boolean isItOnEdge(){
+        if(tiles[catTile].getX()==1 || tiles[catTile].getX()==11 || tiles[catTile].getY()==1 || tiles[catTile].getY()==11){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
+    public boolean validMovesLeft(){
+        boolean valid=false;
+
+        for(int i=0; i<121;i++){
+        if(isItNear(tiles[i])&&!tiles[i].getIsitBlocked()){
+            valid = true;
+        }
+        }
+        return valid;
+    }
     public void moveCat() {
 
         if (difficulty == 4) {
@@ -42,7 +56,7 @@ public class Cat extends Map {
             //convert button to integer 0-120 assign it to i
             int i;
             if (!tiles[i].getIsitBlocked() && isItNear(tiles[i])) {
-                setCatLocation(tiles[i].getY(), tiles[i].getX());
+                catTile=i;
                 notvalid = false;
             }
         }while(notvalid);
@@ -54,24 +68,11 @@ public class Cat extends Map {
         //ai here
 
     }
-    public void setCatLocation(int y, int x) {
-        setCatLocationY(y);
-        setCatLocationX(x);
-    }
-    public int getCatLocationX() {
-        return catLocationX;
+    public void setCatTile(int i){
+        catTile=i;
     }
 
-    public int getCatLocationY() {
-        return catLocationY;
+    public int getCatTile() {
+        return catTile;
     }
-
-    public void setCatLocationX(int catLocationX) {
-        this.catLocationX = catLocationX;
-    }
-
-    public void setCatLocationY(int catLocationY) {
-        this.catLocationY = catLocationY;
-    }
-
 }

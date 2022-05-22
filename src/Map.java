@@ -15,8 +15,13 @@ public class Map extends JComponent {
 
         for(int i=0; i<12; i++){
             double random = Math.random()*121;
-            tiles[(int) random].setIsitBlocked(true);
-        }
+            if(!((int)random==60)) {
+                tiles[(int) random].setIsitBlocked(true);
+            }
+            else {
+                i--;
+            }
+            }
     }
 
 
