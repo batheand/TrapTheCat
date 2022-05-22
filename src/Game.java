@@ -1,6 +1,6 @@
 package src;
 
-public class Game{
+public class Game extends Map{
 
     public int startMenu() {
         //insert "press to start" button and welcome screen
@@ -27,7 +27,7 @@ public class Game{
         displayGraphics();
 
         do {
-            blockerInput().setIsitBlocked(true);
+            blockerInput(kitty).setIsitBlocked(true);
             endCondition = endCurrentTurn(kitty);
             if(!endCondition) {
                 kitty.moveCat();
@@ -54,10 +54,17 @@ public class Game{
         }
     }
 
-    public Tile blockerInput(){
-        //method that takes the input of the blocker by clicking a button
-        // until the press is valid(chekck if blocked or has cat on it)
-        // and returns the cell pressed
+    public Tile blockerInput(Cat kitty){
+        //method in a loop that takes the input of the blocker by clicking a button(buttons return an integer called t)
+        // until the press is valid
+        //press validation
+        int t=0; //buttons result here
+        if(tiles[t].getIsitBlocked()||t== kitty.getCatTile()){
+            //invalid action, reset back the loop
+        }
+        else {//return tiles[t];
+        }
+
     }
 
 }
