@@ -63,34 +63,34 @@ public class Map extends JComponent {
                 i++;
             }
             if(!tiles[Tile.getTileWithCoordinates(cell.getX(), cell.getY()+1)].getIsitBlocked()){
-                adjacent[0]= tiles[Tile.getTileWithCoordinates(cell.getX(), cell.getY()+1)];
+                adjacent[i]= tiles[Tile.getTileWithCoordinates(cell.getX(), cell.getY()+1)];
                 i++;
             }
             if(!tiles[Tile.getTileWithCoordinates(cell.getX()-1, cell.getY())].getIsitBlocked()){
-                adjacent[0]= tiles[Tile.getTileWithCoordinates(cell.getX()-1, cell.getY())];
+                adjacent[i]= tiles[Tile.getTileWithCoordinates(cell.getX()-1, cell.getY())];
                 i++;
                         }
             if(!tiles[Tile.getTileWithCoordinates(cell.getX()+1, cell.getY())].getIsitBlocked()){
-                adjacent[0]= tiles[Tile.getTileWithCoordinates(cell.getX()+1, cell.getY())];
+                adjacent[i]= tiles[Tile.getTileWithCoordinates(cell.getX()+1, cell.getY())];
                 i++;
             }
             if(cell.getY()%2==0){
                 if(!tiles[Tile.getTileWithCoordinates(cell.getX()-1, cell.getY()+1)].getIsitBlocked()){
-                    adjacent[0]= tiles[Tile.getTileWithCoordinates(cell.getX()-1, cell.getY()+1)];
+                    adjacent[i]= tiles[Tile.getTileWithCoordinates(cell.getX()-1, cell.getY()+1)];
                     i++;
                 }
                 if(!tiles[Tile.getTileWithCoordinates(cell.getX()-1, cell.getY()-1)].getIsitBlocked()){
-                    adjacent[0]= tiles[Tile.getTileWithCoordinates(cell.getX()-1, cell.getY()-1)];
+                    adjacent[i]= tiles[Tile.getTileWithCoordinates(cell.getX()-1, cell.getY()-1)];
                     i++;
                 }
             }
             if(cell.getY()%2==1){
                 if(!tiles[Tile.getTileWithCoordinates(cell.getX()+1, cell.getY()+1)].getIsitBlocked()){
-                    adjacent[0]= tiles[Tile.getTileWithCoordinates(cell.getX()+1, cell.getY()+1)];
+                    adjacent[i]= tiles[Tile.getTileWithCoordinates(cell.getX()+1, cell.getY()+1)];
                     i++;
                 }
                 if(!tiles[Tile.getTileWithCoordinates(cell.getX()+1, cell.getY()-1)].getIsitBlocked()){
-                    adjacent[0]= tiles[Tile.getTileWithCoordinates(cell.getX()+1, cell.getY()-1)];
+                    adjacent[i]= tiles[Tile.getTileWithCoordinates(cell.getX()+1, cell.getY()-1)];
                     i++;
                 }
             }

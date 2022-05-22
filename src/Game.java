@@ -35,15 +35,12 @@ public class Game{
             }
 
         } while(!endCondition);
-
-
-        //add userinput here when game ends(endinginput)
-        //retry or return to main menu
-
-
     }
 
-
+    public boolean gameOver(){
+        //add userinput here when game ends(goagain)
+        //main menu or exit
+    }
 
 
     public boolean endCurrentTurn(Cat kitty){

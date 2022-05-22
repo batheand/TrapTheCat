@@ -2,15 +2,20 @@ package src;
 
 public class Main {
     public static void main(String[] args){
-        boolean endinginput=false;
+        boolean goAgain;
         Game ggwp = new Game();
 
-        int choice = ggwp.startMenu();
+        do {
 
-        ggwp.PlayGame(choice);
+            int choice = ggwp.startMenu();
 
+            ggwp.PlayGame(choice);
 
+            goAgain = ggwp.gameOver();
 
+        }while(goAgain);
+
+        System.exit(0);
 
 
     }}
