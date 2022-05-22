@@ -1,21 +1,13 @@
 for graphics, change actual numbers first, and update screen after each change to check if cats and blocks are ok
 
-launch game
-#1, launch menu, 2 buttons(single or multi)
-
-##Single, ask for difficulty, launch
-
-##multi, launch
-
-##launch, display background, display cat, display blocked tiles
+end conditions
+check every neighbor of cat if there are no valid moves, blocker end condition
+check if the cat is on the edge of the map, if so, cat end condition
 
 
-refresh screen:
-if blockers turn: get the newly blocked tile
-change image with blocked version
 
-if cats turn: get new location
-move cat
+
+
 
 gameplay:
 initialize map,
@@ -27,6 +19,7 @@ refresh screen
 action of cat by ai
 refresh screen
 do until end conditions
+put whole thing in loop and give choice at end conditions to retun to main menu, exit or retry
 
 
 ai:
@@ -41,3 +34,5 @@ others get sum of routes with smaller distance to wins
 
 
 best for cat is highest score which is route/distance
+
+add difficulty variable

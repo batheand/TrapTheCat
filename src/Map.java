@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Map extends JComponent {
     public Tile[] tiles = new Tile[121];
 
-    public void initializeMap() {   //initlalizes map and blocks 12 random tiles
+    public Map() {   //constructs map and blocks 12 random tiles
         for(int i=0, y=1,x=1; i<11*11; i++,x++,y++) {
             if((x%12)==0){
                 x+=1;

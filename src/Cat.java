@@ -1,6 +1,14 @@
 package src;
 
 public class Cat extends Map {
+
+    private int difficulty;
+
+    public Cat(){}
+    public Cat(int diff){
+        difficulty=diff;
+            }
+
     private int catLocationX;
     private int catLocationY;
 
@@ -15,23 +23,37 @@ public class Cat extends Map {
         isNear= ((cell.getY() > (currY - 2)) && (cell.getY() < (currY + 2))) && ((cell.getX() > (currX - 2)) && (cell.getX() < (currX + 2)));
         return isNear;
     }
-    public void MoveTheCat(Tile cell) {
-        boolean inBounds = (cell.getX()>=0&&cell.getX()<=8)&&(cell.getY()>=0&&cell.getY()<=8);
-        boolean isAvailable = cell.getIsitBlocked();
-        boolean isNear = isItNear(cell);
-        isAvailable = !isAvailable;
-        if(inBounds&&isAvailable&&isNear){
-            setCatLocation(cell.getY(), cell.getX());
+
+
+    public void moveCat() {
+
+        if (difficulty == 4) {
+            moveByCatInput();
+        } else {
+            moveCatWithCPU();
         }
     }
 
 
+    public void moveByCatInput(){
+        boolean notvalid= true;
+        do {
+            //get the user input for the cat move with a button
+            //convert button to integer 0-120 assign it to i
+            int i;
+            if (!tiles[i].getIsitBlocked() && isItNear(tiles[i])) {
+                setCatLocation(tiles[i].getY(), tiles[i].getX());
+                notvalid = false;
+            }
+        }while(notvalid);
+    }
 
 
+    public void moveCatWithCPU(){
 
+        //ai here
 
-
-
+    }
     public void setCatLocation(int y, int x) {
         setCatLocationY(y);
         setCatLocationX(x);
