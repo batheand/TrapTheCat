@@ -1,26 +1,7 @@
 for graphics, change actual numbers first, and update screen after each change to check if cats and blocks are ok
 
-end conditions
-check every neighbor of cat if there are no valid moves, blocker end condition
-check if the cat is on the edge of the map, if so, cat end condition
 
 
-
-
-
-
-
-gameplay:
-initialize map,
-place cat,
-refresh screen
-give turn to player
-record blocked tile
-refresh screen
-action of cat by ai
-refresh screen
-do until end conditions
-put whole thing in loop and give choice at end conditions to retun to main menu, exit or retry
 
 
 ai:
