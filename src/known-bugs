@@ -1,0 +1,7 @@
+
+
+ai has difficulty when using routes methods, especially on later iterations as opposed to the first
+both the ai and player cat can sometimes traverse thorough blocked objects(tiles that should return being blocked return false to being blocked)
+the game doesnt end when blocker win condition is met, due to the false return issue mentioner
+
+not an actual bug but there is literally 0 exception handling, lots of trust on the user to follow commands.
