@@ -8,6 +8,7 @@ public class Game extends Map{
     public int startMenu() {
       System.out.println("Please choose your game mode!");
       System.out.println("1-Vs Easy AI      2-Vs Average AI     3-Vs Strong AI      4-Multiplayer");
+      System.out.println("Please note that the goals of the AI are beyond our understanding. Human Comprehension fails to grasp them.");
       Scanner k = new Scanner(System.in);
       return k.nextInt();
     }

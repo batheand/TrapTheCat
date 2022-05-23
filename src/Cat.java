@@ -79,6 +79,7 @@ public class Cat extends Map {
         }
         Arrays.sort(nextscores);
         int lowestindex=0, highestindex=0;
+
         for(int i=0; i<adjacent(tiles[catTile]).length; i++){
 
             if (adjacent(tiles[catTile])[i].getScore()==nextscores[0]){
