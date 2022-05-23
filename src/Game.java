@@ -14,15 +14,9 @@ public class Game extends Map{
 
     public void displayGraphics(Cat kitty, JFrame screen) {
 
-        Panel p = new Panel();
-
-        p.receiveGameState(tiles,kitty);
-        screen.add(p);
-
-        screen.pack();
-        screen.setLocationRelativeTo(null);
-        screen.setVisible(true);
-
+        Panel update = new Panel();
+        update.receiveGameState(tiles,kitty);
+        screen.add(update);
     }
 
     private int turnCount=0;
