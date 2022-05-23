@@ -27,7 +27,7 @@ public class Cat extends Map {
         return tiles[catTile].getX() == 1 || tiles[catTile].getX() == 11 || tiles[catTile].getY() == 1 || tiles[catTile].getY() == 11;
     }
 
-    public boolean validMovesLeft(){
+    public boolean validMovesLeft(){    //somethings wrong i can feeel it
         boolean valid=false;
 
         for(int i=0; i<121;i++){
@@ -56,7 +56,8 @@ public class Cat extends Map {
             x = k.nextInt();
             System.out.println("Please enter the y value for the tile you wish to move to.");
             y = k.nextInt();
-            if(tiles[Tile.getTileWithCoordinates(x,y)].getIsitBlocked()||!isItNear(tiles[Tile.getTileWithCoordinates(x,y)])){
+            int a=Tile.getTileWithCoordinates(x,y);
+            if(tiles[a].getIsitBlocked()||!isItNear(tiles[Tile.getTileWithCoordinates(x,y)])){
                 System.out.println("The tile you have selected is either blocked or too far away, please try again.");
                 arewethereyet =true;
             }
