@@ -1,6 +1,8 @@
 package src;
 
 import java.util.Arrays;
+import java.util.Scanner;
+
 
 public class Cat extends Map {
 
@@ -50,18 +52,23 @@ public class Cat extends Map {
         }
     }
 
-
+    private boolean arewethereyet;
     public void moveByCatInput(){
         boolean notvalid= true;
+        int x,y;
         do {
-            //get the user input for the cat move with a button
-            //convert button to integer 0-120 assign it to i
-            int i;
-            if (!tiles[i].getIsitBlocked() && isItNear(tiles[i])) {
-                catTile=i;
-                notvalid = false;
+            arewethereyet= false;
+            Scanner k = new Scanner(System.in);
+            System.out.println("Please enter the x value for the tile you wish to move to.");
+            x = k.nextInt();
+            System.out.println("Please enter the y value for the tile you wish to move to.");
+            y = k.nextInt();
+            if(tiles[Tile.getTileWithCoordinates(x,y)].getIsitBlocked()||!isItNear(tiles[Tile.getTileWithCoordinates(x,y)])){
+                System.out.println("The tile you have selected is either blocked or too far away, please try again.");
+                arewethereyet=true;
             }
-        }while(notvalid);
+        }while(arewethereyet);
+        catTile=Tile.getTileWithCoordinates(x,y);
     }
 
 

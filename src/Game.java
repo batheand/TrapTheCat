@@ -1,22 +1,37 @@
 package src;
 
+import javax.swing.*;
+import java.util.Scanner;
+
 public class Game extends Map{
 
     public int startMenu() {
-        //insert "press to start" button and welcome screen
-        //when button is pressed, show the next screen with two options(single or multi)
-        //if player chooses single, ask difficulty out of 3(1,2,3) with three buttons and return the number
-        //if player chooses multi, return 4
+      System.out.println("Please choose your game mode!");
+      System.out.println("1-Vs Easy AI  2-Vs Average AI     3-Vs Strong AI      4-Multiplayer");
+      Scanner k = new Scanner(System.in);
+      return k.nextInt();
     }
 
     public void displayGraphics() {
+        JFrame screen = new JFrame();
 
-        //insert method here to display(and refresh) all graphics(display map, blocked tiles, cat)
+
+        screen.setResizable(false);
+        screen.setTitle("Cat Trap");
+
+        Panel p = new Panel();
+
+        screen.add(p);
+
+        screen.pack();
+        screen.setLocationRelativeTo(null);
+        screen.setVisible(true);
 
     }
 
     private int turnCount=0;
 
+    boolean hasCatWon;
     public void PlayGame(int diff) {
 
         boolean endCondition=false;
@@ -27,7 +42,7 @@ public class Game extends Map{
         displayGraphics();
 
         do {
-            blockerInput(kitty).setIsitBlocked(true);
+            tiles[blockerInput(kitty)].setIsitBlocked(true);
             endCondition = endCurrentTurn(kitty);
             if(!endCondition) {
                 kitty.moveCat();
@@ -35,15 +50,36 @@ public class Game extends Map{
             }
 
         } while(!endCondition);
+
+        hasCatWon=kitty.isItOnEdge();
+
     }
 
     public boolean gameOver(){
-        //add userinput here when game ends(goagain)
-        //main menu or exit
+        System.out.print("Game over: ");
+        if(hasCatWon){
+            System.out.println("The Cat Shall Escape Into A New Reality, Unchained and Free.");
+        }
+        else{
+            System.out.println("Have it writ on thy meagre grave, A Cat Forever Bound to chain");
+
+        }
+        System.out.println("After all that, do you still wish to keep going?");
+        System.out.println("If so, do enter 1.");
+        System.out.println("HOWEVER");
+        System.out.println("Should you wish to stop this madness at once, pressing any other number just might help...");
+        Scanner k = new Scanner(System.in);
+        if(k.nextInt()==1){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 
     public boolean endCurrentTurn(Cat kitty){
+
         displayGraphics();
         turnCount++;
         if(turnCount%2==1){
@@ -53,18 +89,24 @@ public class Game extends Map{
             return kitty.isItOnEdge();
         }
     }
+    private boolean arewethereyet;
+    public int blockerInput(Cat kitty){
+        int x,y;
+        do {
+            arewethereyet= false;
+            Scanner k = new Scanner(System.in);
+            System.out.println("Please enter the x value for the tile you wish to block.");
+            x = k.nextInt();
+            System.out.println("Please enter the y value for the tile you wish to block.");
+            y = k.nextInt();
+            if(tiles[Tile.getTileWithCoordinates(x,y)].getIsitBlocked()||kitty.getCatTile()==Tile.getTileWithCoordinates(x,y)){
+                System.out.println("The tile you have selected is either already blocked or has a cat on it, please try again.");
+            arewethereyet=true;
+            }
+        }while(arewethereyet);
 
-    public Tile blockerInput(Cat kitty){
-        //method in a loop that takes the input of the blocker by clicking a button(buttons return an integer called t)
-        // until the press is valid
-        //press validation
-        int t=0; //buttons result here
-        if(tiles[t].getIsitBlocked()||t== kitty.getCatTile()){
-            //invalid action, reset back the loop
-        }
-        else {//return tiles[t];
-        }
-
+        return Tile.getTileWithCoordinates(x,y);
     }
+
 
 }

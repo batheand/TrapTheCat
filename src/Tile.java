@@ -1,7 +1,6 @@
 package src;
 
-public class Tile {
-
+public class Tile{
 
     private int routes;
     private int distanceToWin;

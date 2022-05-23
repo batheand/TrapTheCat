@@ -22,6 +22,9 @@ public class Map extends JComponent {
                 i--;
             }
             }
+
+
+
     }
     public Tile[] adjacent(Tile cell){
         int i=0;
