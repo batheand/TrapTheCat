@@ -12,15 +12,11 @@ public class Game extends Map{
       return k.nextInt();
     }
 
-    public void displayGraphics() {
-        JFrame screen = new JFrame();
-
-
-        screen.setResizable(false);
-        screen.setTitle("Cat Trap");
+    public void displayGraphics(Cat kitty, JFrame screen) {
 
         Panel p = new Panel();
 
+        p.receiveGameState(tiles,kitty);
         screen.add(p);
 
         screen.pack();
@@ -32,21 +28,21 @@ public class Game extends Map{
     private int turnCount=0;
 
     boolean hasCatWon;
-    public void PlayGame(int diff) {
+    public void PlayGame(int diff, JFrame screen) {
 
-        boolean endCondition=false;
+        boolean endCondition;
 
         Cat kitty = new Cat(diff);
         kitty.initializeCatLocation();
         Map arena = new Map();
-        displayGraphics();
+        displayGraphics(kitty,screen);
 
         do {
             tiles[blockerInput(kitty)].setIsitBlocked(true);
-            endCondition = endCurrentTurn(kitty);
+            endCondition = endCurrentTurn(kitty, screen);
             if(!endCondition) {
                 kitty.moveCat();
-                endCondition = endCurrentTurn(kitty);
+                endCondition = endCurrentTurn(kitty, screen);
             }
 
         } while(!endCondition);
@@ -69,18 +65,13 @@ public class Game extends Map{
         System.out.println("HOWEVER");
         System.out.println("Should you wish to stop this madness at once, pressing any other number just might help...");
         Scanner k = new Scanner(System.in);
-        if(k.nextInt()==1){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return k.nextInt() == 1;
     }
 
 
-    public boolean endCurrentTurn(Cat kitty){
+    public boolean endCurrentTurn(Cat kitty, JFrame screen){
 
-        displayGraphics();
+        displayGraphics(kitty, screen);
         turnCount++;
         if(turnCount%2==1){
             return !kitty.validMovesLeft();
@@ -89,11 +80,12 @@ public class Game extends Map{
             return kitty.isItOnEdge();
         }
     }
-    private boolean arewethereyet;
+
     public int blockerInput(Cat kitty){
         int x,y;
+        boolean arewethereyet;
         do {
-            arewethereyet= false;
+            arewethereyet = false;
             Scanner k = new Scanner(System.in);
             System.out.println("Please enter the x value for the tile you wish to block.");
             x = k.nextInt();
@@ -101,7 +93,7 @@ public class Game extends Map{
             y = k.nextInt();
             if(tiles[Tile.getTileWithCoordinates(x,y)].getIsitBlocked()||kitty.getCatTile()==Tile.getTileWithCoordinates(x,y)){
                 System.out.println("The tile you have selected is either already blocked or has a cat on it, please try again.");
-            arewethereyet=true;
+            arewethereyet =true;
             }
         }while(arewethereyet);
 

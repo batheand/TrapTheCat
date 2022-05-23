@@ -9,7 +9,6 @@ public class Cat extends Map {
     private int difficulty;
     private int catTile;
 
-    public Cat(){}
     public Cat(int diff){
         difficulty=diff;
             }
@@ -25,12 +24,7 @@ public class Cat extends Map {
     }
 
     public boolean isItOnEdge(){
-        if(tiles[catTile].getX()==1 || tiles[catTile].getX()==11 || tiles[catTile].getY()==1 || tiles[catTile].getY()==11){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return tiles[catTile].getX() == 1 || tiles[catTile].getX() == 11 || tiles[catTile].getY() == 1 || tiles[catTile].getY() == 11;
     }
 
     public boolean validMovesLeft(){
@@ -52,12 +46,11 @@ public class Cat extends Map {
         }
     }
 
-    private boolean arewethereyet;
     public void moveByCatInput(){
-        boolean notvalid= true;
         int x,y;
+        boolean arewethereyet;
         do {
-            arewethereyet= false;
+            arewethereyet = false;
             Scanner k = new Scanner(System.in);
             System.out.println("Please enter the x value for the tile you wish to move to.");
             x = k.nextInt();
@@ -65,7 +58,7 @@ public class Cat extends Map {
             y = k.nextInt();
             if(tiles[Tile.getTileWithCoordinates(x,y)].getIsitBlocked()||!isItNear(tiles[Tile.getTileWithCoordinates(x,y)])){
                 System.out.println("The tile you have selected is either blocked or too far away, please try again.");
-                arewethereyet=true;
+                arewethereyet =true;
             }
         }while(arewethereyet);
         catTile=Tile.getTileWithCoordinates(x,y);
