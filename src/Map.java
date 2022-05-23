@@ -1,8 +1,7 @@
 package src;
 
-import javax.swing.*;
 
-public class Map extends JComponent {
+public class Map {
     public Tile[] tiles = new Tile[121];
 
     public Map() {   //constructs map and blocks 12 random tiles
