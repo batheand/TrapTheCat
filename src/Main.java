@@ -12,11 +12,7 @@ public class Main {
         screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         screen.setResizable(false);
         screen.setTitle("Cat Trap");
-        Panel p = new Panel();
-        screen.add(p);
-        screen.pack();
-        screen.setLocationRelativeTo(null);
-        screen.setVisible(true);
+
 
 
 
