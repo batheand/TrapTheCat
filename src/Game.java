@@ -17,7 +17,7 @@ public class Game extends Map{
         p.receiveGameState(tiles,kitty);
         screen.add(p);
         screen.pack();
-        screen.setLocationRelativeTo(null);
+
         screen.setVisible(true);
 
 

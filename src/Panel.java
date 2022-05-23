@@ -52,10 +52,11 @@ public class Panel extends JPanel{
         for(int i=0; i<121;i++){
             if(cell[i].getIsitBlocked()){
                 if(cell[i].getY()%2==1){
-                    g.fillOval(100+65*cell[i].getX()-1,100+130*cell[i].getY()-1,tileSize,tileSize);
+
+                    g.fillOval(100+65*(cell[i].getX()-1),100+130*(cell[i].getY()-1),tileSize,tileSize);
                 }
                 else{
-                    g.fillOval(75+65*cell[i].getX()-1,165+130*cell[i].getY()-2,tileSize,tileSize);
+                    g.fillOval(75+65*(cell[i].getX()-1),165+130*(cell[i].getY()-2),tileSize,tileSize);
 
                 }
 
@@ -67,11 +68,11 @@ public class Panel extends JPanel{
         g.setColor(Color.red);
 
         if(cell[cat.getCatTile()].getY()%2==1){
-            g.fillOval(100+65*cell[cat.getCatTile()].getX()-1,100+130*cell[cat.getCatTile()].getY()-1,tileSize,tileSize);
+            g.fillOval(100+65*(cell[cat.getCatTile()].getX()-1),100+130*(cell[cat.getCatTile()].getY()-1),tileSize,tileSize);
         }
 
         else{
-            g.fillOval(75+65*cell[cat.getCatTile()].getX()-1,165+130*cell[cat.getCatTile()].getY()-2,tileSize,tileSize);
+            g.fillOval(75+65*(cell[cat.getCatTile()].getX()-1),165+130*(cell[cat.getCatTile()].getY()-2),tileSize,tileSize);
         }
 
 
