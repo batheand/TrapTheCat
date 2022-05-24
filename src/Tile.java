@@ -9,14 +9,18 @@ public class Tile{
     private boolean isitBlocked;
     private final int x, y;
 
+
     public Tile(int coordianteX, int coordinateY){
         isitBlocked = false;
         x=coordianteX;
         y=coordinateY;
+
     }
 
 
-public static int getTileWithCoordinates(int x, int y){
+
+
+    public static int getTileWithCoordinates(int x, int y){
         return x-1+ (y-1)*11;
 }
     public void setIsitBlocked(boolean isitBlocked) {

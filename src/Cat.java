@@ -4,39 +4,70 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 
-public class Cat extends Map {
+public class Cat extends Map{
+
+    private Tile[] tiles;
 
     private final int difficulty;
     private int catTile;
 
-    public Cat(int diff){
+    public Cat(int diff, Tile[] testmetiles){
         difficulty=diff;
+        tiles=testmetiles;
             }
 
     public void initializeCatLocation(){
         catTile=60;
     }
 
-    public boolean isItNear(Tile cell) {
-                boolean isNear;
-        isNear= ((cell.getY() > (tiles[catTile].getY() - 2)) && (cell.getY() < (tiles[catTile].getY() + 2))) && ((cell.getX() > (tiles[catTile].getX() - 2)) && (cell.getX() < (tiles[catTile].getX() + 2)));
-        return isNear;
+
+
+
+    public boolean isItNear(Tile cell){
+
+boolean result = false;
+
+        if(cell.getX()==tiles[catTile].getX() && cell.getY()==tiles[catTile].getY()-1)
+            result = true;
+        if(cell.getX()==tiles[catTile].getX() && cell.getY()==tiles[catTile].getY()+1)
+            result=true;
+        if(cell.getX()==tiles[catTile].getX()-1 && cell.getY()==tiles[catTile].getY())
+            result=true;
+        if(cell.getX()==tiles[catTile].getX()+1 && cell.getY()==tiles[catTile].getY())
+            result=true;
+                        //if even row
+        if(tiles[catTile].getY()%2==0) {
+            if (cell.getX() == tiles[catTile].getX() - 1 && cell.getY() == tiles[catTile].getY() + 1)
+                result=true;
+            if (cell.getX() == tiles[catTile].getX() - 1 && cell.getY() == tiles[catTile].getY() - 1)
+                result=true;
+        }
+        if(tiles[catTile].getY()%2==1) {
+            if (cell.getX() == tiles[catTile].getX() + 1 && cell.getY() == tiles[catTile].getY() + 1)
+                result=true;
+            if (cell.getX() == tiles[catTile].getX() + 1 && cell.getY() == tiles[catTile].getY() - 1)
+                result=true;
+        }
+                  return result;
+
     }
 
     public boolean isItOnEdge(){
         return tiles[catTile].getX() == 1 || tiles[catTile].getX() == 11 || tiles[catTile].getY() == 1 || tiles[catTile].getY() == 11;
     }
-
-    public boolean validMovesLeft(){    //somethings wrong i can feeel it
+    public boolean validMovesLeft(){
         boolean valid=false;
 
         for(int i=0; i<121;i++){
-        if(isItNear(tiles[i])&&!tiles[i].getIsitBlocked()){
-            valid = true;
-        }
+                        if(isItNear(tiles[i]) && !tiles[i].getIsitBlocked()){
+                valid = true;
+            }
         }
         return valid;
     }
+
+
+
     public void moveCat() {
 
         if (difficulty == 4) {

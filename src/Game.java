@@ -34,7 +34,7 @@ public class Game extends Map{
         boolean endCondition;
 
         Map arena = new Map();
-        Cat kitty = new Cat(diff);
+        Cat kitty = new Cat(diff, tiles);
         kitty.initializeCatLocation();
 
         displayGraphics(kitty,screen);
@@ -53,6 +53,17 @@ public class Game extends Map{
 
     }
 
+    public boolean endCurrentTurn(Cat kitty, JFrame screen){
+
+        displayGraphics(kitty, screen);
+        turnCount++;
+        if(turnCount%2==1){
+            return !kitty.validMovesLeft();
+        }
+        else{
+            return kitty.isItOnEdge();
+        }
+    }
     public boolean gameOver(){
         System.out.print("Game over: ");
         if(hasCatWon){
@@ -70,18 +81,6 @@ public class Game extends Map{
         return k.nextInt() == 1;
     }
 
-
-    public boolean endCurrentTurn(Cat kitty, JFrame screen){
-
-        displayGraphics(kitty, screen);
-        turnCount++;
-        if(turnCount%2==1){
-            return !kitty.validMovesLeft();
-        }
-        else{
-            return kitty.isItOnEdge();
-        }
-    }
 
     public int blockerInput(Cat kitty){
         int x,y;
