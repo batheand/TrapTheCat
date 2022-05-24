@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Cat extends Map {
 
-    private int difficulty;
+    private final int difficulty;
     private int catTile;
 
     public Cat(int diff){
@@ -56,8 +56,7 @@ public class Cat extends Map {
             x = k.nextInt();
             System.out.println("Please enter the y value for the tile you wish to move to.");
             y = k.nextInt();
-            int a=Tile.getTileWithCoordinates(x,y);
-            if(tiles[a].getIsitBlocked()||!isItNear(tiles[Tile.getTileWithCoordinates(x,y)])){
+            if(tiles[Tile.getTileWithCoordinates(x,y)].getIsitBlocked()||!isItNear(tiles[Tile.getTileWithCoordinates(x,y)])){
                 System.out.println("The tile you have selected is either blocked or too far away, please try again.");
                 arewethereyet =true;
             }
