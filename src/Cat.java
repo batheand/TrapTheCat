@@ -7,11 +7,12 @@ import java.util.Scanner;
 public class Cat extends Map{
 
 
-
+private Tile[] tiles;
     private final int difficulty;
     private int catTile;
 
-    public Cat(int diff){
+    public Cat(int diff, Tile[] tilly){
+      tiles=tilly;
         difficulty=diff;
     }
 

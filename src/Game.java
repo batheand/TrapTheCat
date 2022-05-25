@@ -39,7 +39,7 @@ public class Game extends Map{
         boolean endCondition;
 
         Map arena = new Map();
-        Cat kitty = new Cat(diff);
+        Cat kitty = new Cat(diff,tiles);
         kitty.initializeCatLocation();
 
         displayGraphics(kitty,screen);
