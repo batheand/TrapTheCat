@@ -15,6 +15,8 @@ public class Panel extends JPanel{
 
     Tile[] cell;
     Cat cat;
+
+    //take current state of game to display accurate graphics
     public void receiveGameState(Tile[] cell, Cat cat){
     this.cell=cell;
     this.cat=cat;
@@ -28,7 +30,7 @@ public class Panel extends JPanel{
 
     }
 
-
+//paints 121 yellow tiles, then paints black over the blocked ones, then paints the Cat's location red
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);

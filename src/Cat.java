@@ -6,15 +6,14 @@ import java.util.Scanner;
 
 public class Cat extends Map{
 
-    private Tile[] tiles;
+
 
     private final int difficulty;
     private int catTile;
 
-    public Cat(int diff, Tile[] testmetiles){
+    public Cat(int diff){
         difficulty=diff;
-        tiles=testmetiles;
-            }
+    }
 
     public void initializeCatLocation(){
         catTile=60;
@@ -23,7 +22,7 @@ public class Cat extends Map{
 
 
 
-    public boolean isItNear(Tile cell){
+    public boolean isItNear(Tile cell){  // used to check if the tile given in parameter is adjacent to the cat
 
 boolean result = false;
 
@@ -35,7 +34,7 @@ boolean result = false;
             result=true;
         if(cell.getX()==tiles[catTile].getX()+1 && cell.getY()==tiles[catTile].getY())
             result=true;
-                        //if even row
+
         if(tiles[catTile].getY()%2==0) {
             if (cell.getX() == tiles[catTile].getX() - 1 && cell.getY() == tiles[catTile].getY() + 1)
                 result=true;
@@ -52,10 +51,10 @@ boolean result = false;
 
     }
 
-    public boolean isItOnEdge(){
+    public boolean isItOnEdge(){  //used to check if the cat is on the edge of the map, in which case it will win
         return tiles[catTile].getX() == 1 || tiles[catTile].getX() == 11 || tiles[catTile].getY() == 1 || tiles[catTile].getY() == 11;
     }
-    public boolean validMovesLeft(){
+    public boolean validMovesLeft(){ //used to check if the cat has any possible moves left to play, if not, the blocker will win
         boolean valid=false;
 
         for(int i=0; i<121;i++){
@@ -68,7 +67,7 @@ boolean result = false;
 
 
 
-    public void moveCat() {
+    public void moveCat() { //general method to move the cat, will take into consideration both gameplay mode and AI difficulty
 
         if (difficulty == 4) {
             moveByCatInput();
@@ -95,7 +94,13 @@ boolean result = false;
         catTile=Tile.getTileWithCoordinates(x,y);
     }
 
+    // due to a local array duplication bug i am yet to understand, the AI is partially broken as it can sometimes move to blocked tiles as well
+    // same error causes difficulty adjustment to work less than it is supposed to
 
+    //use an algorithm to assign each tile a dtw value(how many moves left until a state of victory is reached),
+    // a route value(how many routes can be taken for victory in said the least amount of moves)
+    //a score value(routes /distance to win)
+    //if needed yuksel.baypinar@tedu.edu.tr can provide a fully detailed explanation of how the AI functions
     public void moveCatWithCPU(){
         dtwAssignment();
 

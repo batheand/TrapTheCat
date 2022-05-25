@@ -4,7 +4,8 @@ package src;
 public class Map {
     public Tile[] tiles = new Tile[121];
 
-    public Map() {   //constructs map and blocks 12 random tiles
+
+    public Map() {   //constructs map and blocks 11 random tiles
         for(int i=0, y=1,x=1; i<11*11; i++,x++,y++) {
             if((x%12)==0){
                 x+=1;
@@ -12,7 +13,7 @@ public class Map {
             tiles[i] = new Tile(x%12,y / 11 + ((y % 11 == 0) ? 0 : 1));
         }
 
-        for(int i=0; i<12; i++){
+        for(int i=0; i<11; i++){
             double random = Math.random()*121;
             if(!((int)random==60)) {
                 tiles[(int) random].setIsitBlocked(true);
@@ -21,10 +22,9 @@ public class Map {
                 i--;
             }
             }
-
-
-
     }
+
+    //creates an array of tiles that are unblocked and adjacent to the parameter tile
     public Tile[] adjacent(Tile cell){
         int i=0;
         if(!tiles[Tile.getTileWithCoordinates(cell.getX(), cell.getY()-1)].getIsitBlocked()){
@@ -55,7 +55,9 @@ public class Map {
                 i++;
             }
         }
+
         Tile[] adjacent = new Tile[i];
+
         if (i != 0) {
 
             i = 0;
@@ -93,18 +95,7 @@ public class Map {
                     adjacent[i] = tiles[Tile.getTileWithCoordinates(cell.getX() + 1, cell.getY() - 1)];
                 }
             }
-
         }
         return adjacent;
-
-
     }
-
-
-
-
-
-
-
-
 }

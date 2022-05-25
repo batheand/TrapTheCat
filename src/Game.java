@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class Game extends Map{
 
+
+    // start of the game, takes user input to set gaemplay mode
     public int startMenu() {
       System.out.println("Please choose your game mode!");
       System.out.println("1-Vs Easy AI      2-Vs Average AI     3-Vs Strong AI      4-Multiplayer");
@@ -12,7 +14,7 @@ public class Game extends Map{
       Scanner k = new Scanner(System.in);
       return k.nextInt();
     }
-
+// a method that refreshes the content of the Jframe created in the main class, will be used after each turn to provide accurate graphics
     public void displayGraphics(Cat kitty, JFrame screen) {
         Panel p = new Panel();
         p.receiveGameState(tiles,kitty);
@@ -29,12 +31,15 @@ public class Game extends Map{
     private int turnCount=0;
 
     boolean hasCatWon;
+
+
+    // the primary gameplay loop that also checks whether the game is over or not
     public void PlayGame(int diff, JFrame screen) {
 
         boolean endCondition;
 
         Map arena = new Map();
-        Cat kitty = new Cat(diff, tiles);
+        Cat kitty = new Cat(diff);
         kitty.initializeCatLocation();
 
         displayGraphics(kitty,screen);
@@ -52,7 +57,7 @@ public class Game extends Map{
         hasCatWon=kitty.isItOnEdge();
 
     }
-
+// end of turn checks for game-state and graphics updates
     public boolean endCurrentTurn(Cat kitty, JFrame screen){
 
         displayGraphics(kitty, screen);
@@ -64,6 +69,8 @@ public class Game extends Map{
             return kitty.isItOnEdge();
         }
     }
+
+    // will ask the user to either play again or quit
     public boolean gameOver(){
         System.out.print("Game over: ");
         if(hasCatWon){
@@ -81,7 +88,7 @@ public class Game extends Map{
         return k.nextInt() == 1;
     }
 
-
+//takes input from the player in the role of blocker
     public int blockerInput(Cat kitty){
         int x,y;
         boolean arewethereyet;
