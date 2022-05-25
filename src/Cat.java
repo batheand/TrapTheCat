@@ -100,7 +100,8 @@ boolean result = false;
     //use an algorithm to assign each tile a dtw value(how many moves left until a state of victory is reached),
     // a route value(how many routes can be taken for victory in said the least amount of moves)
     //a score value(routes /distance to win)
-    //if needed yuksel.baypinar@tedu.edu.tr can provide a fully detailed explanation of how the AI functions
+    //the algorithm is something i came up with during my research on MiniMax and Breadth first search algorithms for this project
+    //if needed i can provide a fully detailed explanation on how the AI functions( yuksel.baypinar@tedu.edu.tr)
     public void moveCatWithCPU(){
         dtwAssignment();
 
