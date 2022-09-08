@@ -1,1 +1,1 @@
-
+This project has been finalized. The game can be played with terminal commands, either with a friend on the human vs human mode or against the computer. Against the computer you have 3 modes: Easy, Median and Hard. The purpose of the game is to trap the cat. There is an original version on the internet and this project was inspired by it, however all the code belongs to our team.
