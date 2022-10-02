@@ -95,7 +95,10 @@ boolean result = false;
         catTile=Tile.getTileWithCoordinates(x,y);
     }
 
-    // due to a local array duplication bug i am yet to understand, the AI is partially broken as it can sometimes move to blocked tiles as well
+    // due to an array duplication bug i am yet to understand, the AI is partially broken as it can sometimes move to blocked tiles as well
+
+    // check if issue is persistent with previously blocked tiles or the user blocked ones.(can try comparing with the multiplayer mode that has the feature working properly
+    // game reset fails to clear blocked tiles
     // same error causes difficulty adjustment to work less than it is supposed to
 
     //use an algorithm to assign each tile a dtw value(how many moves left until a state of victory is reached),

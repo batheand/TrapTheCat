@@ -13,7 +13,7 @@ public class Map {
             tiles[i] = new Tile(x%12,y / 11 + ((y % 11 == 0) ? 0 : 1));
         }
 
-        for(int i=0; i<11; i++){
+        for(int i=0; i<100; i++){
             double random = Math.random()*121;
             if(!((int)random==60)) {
                 tiles[(int) random].setIsitBlocked(true);

@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Game extends Map{
 
 
-    // start of the game, takes user input to set gaemplay mode
+    // start of the game, takes user input to set gameplay mode
     public int startMenu() {
       System.out.println("Please choose your game mode!");
       System.out.println("1-Vs Easy AI      2-Vs Average AI     3-Vs Strong AI      4-Multiplayer");
